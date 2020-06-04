@@ -29,6 +29,7 @@ a {
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -60,12 +61,270 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 200px;
 }
 .footer {
   position: absolute;
-  bottom: 0;
+  bottom: -520px;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  line-height: -10px; /* Vertically center the text there */
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    height: auto;
+}
+
+h1 {
+    padding: -20px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.intro {
+    width: 100%;
+    height: 100%;
+    background: url("../images/cat.png") center top no-repeat #1a79f3;
+    -webkit-background-size: auto;
+    background-size: auto;
+    padding-bottom: 100px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.search-wrapper {
+    position: relative;
+    display: inline-block;
+    right: -200px;
+    bottom: -43px;
+    vertical-align: top;
+    max-width: 800px;
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.search {
+    display: block;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    min-height: 32px;
+    text-indent: 60px;
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: 500;
+    border-color: #e1e1e1;
+    border-width: 1px;
+    border-style: solid;
+    outline: 0;
+}
+
+.search-submit {
+    position: absolute;
+    top: 50%;
+    right: 750px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    margin-top: -16px;
+    line-height: 32px;
+    border: none;
+    background: none;
+}
+
+    .search-submit > img {
+        vertical-align: middle;
+    }
+
+
+.block {
+    position: absolute;
+    margin-top: 200px;
+    left: 50%;
+   
+    margin-left: -400px;
+    background: #ffffff;
+    border-radius: 10px;
+    width: 388px;
+    height: 161px;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 5;
+    letter-spacing: normal;
+    padding-left: 25px;
+}
+
+
+
+.block2 {
+    position: absolute;
+    left: 50%;
+    margin-top: 200px;
+    margin-left: 15px;
+    background: #ffffff;
+    border-radius: 10px;
+    width: 388px;
+    height: 161px;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 5;
+    letter-spacing: normal;
+    padding-left: 25px;
+}
+
+.block3 {
+    position: absolute;
+    left: 50%;
+    top: 270px;
+    margin-left: -400px;
+    background: #ffffff;
+    border-radius: 10px;
+    display: inline-block;
+    width: 800px;
+    height: 472px;
+}
+
+p {
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    color: #131313;
+    margin-top: -25px;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    color: #000000;
+    padding-left: 35px;
+    position: absolute;
+    top: 7%;
+}
+
+nav ul {
+    font-size: 17px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 4.5;
+    letter-spacing: normal;
+    color: #332a7c;
+    padding-left: 100px;
+    margin-top: 60px;
+    list-style: none;
+}
+
+li.void:before {
+    content: '';
+    display: inline-block;
+    background: url("../images/ico-mouse.png") center no-repeat;
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: #d5e7ff;
+    position: absolute;
+    left: 4%;
+    margin-top: 25px;
+}
+
+li.void2:before {
+    content: '';
+    display: inline-block;
+    background: url("../images/path.png") center no-repeat;
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: #d5e7ff;
+    position: absolute;
+    left: 4%;
+    margin-top: 25px;
+}
+
+li.void3:before {
+    content: '';
+    display: inline-block;
+    background: url("../images/ico-doc.png") center no-repeat;
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: #d5e7ff;
+    position: absolute;
+    left: 4%;
+    margin-top: 25px;
+}
+
+li.void4:before {
+    content: '';
+    display: inline-block;
+    background: url("../images/ico-key.png") center no-repeat;
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: #d5e7ff;
+    position: absolute;
+    left: 4%;
+    margin-top: 25px;
+}
+
+li.void5:before {
+    content: '';
+    display: inline-block;
+    background: url("../images/ico-po.png") center no-repeat;
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: #d5e7ff;
+    position: absolute;
+    left: 4%;
+    margin-top: 25px;
+}
+
+.search-submit1 {
+    height: 25px;
+    width: 20px;
+    position: absolute;
+    margin-left: 95%;
+    margin-top: -40px;
+    font-size: 17px;
+    outline: none;
+    border: 0;
+    background-color: #ffffff;
+    color: #b8b8cc;
 }
