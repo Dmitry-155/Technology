@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Technology.WebPortal.Models.Employee>
+
+@{
+    ViewBag.Title = "Сотрудники";
+}
+
+<h2>Сотрудники</h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Имя</th>
+        <th>Адрес</th>
+        <th>Компания</th>
+        <th>Профессия</th>
+    </tr>
+    @for (int item = 0; item < Model.Count(); item++)
+    {
+        <tr>
+            <td>
+                <text>@Model.ToList()[item].EmployeeId</text>
+            </td>
+            <td>
+                <text>@Model.ToList()[item].Name</text>
+            </td>
+            <td>
+                <text>@Model.ToList()[item].Address</text>
+            </td>
+            <td>
+                <text>@Model.ToList()[item].CompanyName</text>
+            </td>
+            <td>
+                <text>@Model.ToList()[item].Designation</text>
+            </td>
+        </tr>
+    }
+</table>
