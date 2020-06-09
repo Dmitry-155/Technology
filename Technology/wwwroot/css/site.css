@@ -164,7 +164,7 @@ h1 {
     margin: 5px;
     display: inline-block;
     width: 45%;
-    background: #ffffff;
+    background-color: #F0F0F0;
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -175,7 +175,7 @@ h1 {
     padding: 10px;
     border-style: solid;
     border-width: 1px;
-    border-color: blue;
+    border-color: white;
 }
 
 .block2 {
@@ -183,7 +183,7 @@ h1 {
     display: inline-block;
     width: 45%;
     margin-left: 8%;
-    background: #ffffff;
+    background-color: #F0F0F0;
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -194,7 +194,7 @@ h1 {
     padding: 10px;
     border-style: solid;
     border-width: 1px;
-    border-color: blue;
+    border-color: white;
 }
 
 .block3 {
@@ -241,6 +241,7 @@ nav ul {
     color: #332a7c;
     padding-left: 30px;
     list-style: none;
+    background-color: #F0F0F0;
 }
 
 li.void:before {
