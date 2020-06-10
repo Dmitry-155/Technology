@@ -39,17 +39,6 @@ namespace Technology.WebPortal.DAL
                 .WithOne(e => e.Issue)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            //modelBuilder.Entity<Employee>()
-            //    .HasMany()
-            //    .WithOne(m => m.EmployeeId)
-            //    .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<Issue>()
-            //            .HasRequired(m => m.GuestTeam)
-            //            .WithMany(t => t.AwayMatches)
-            //            .HasForeignKey(m => m.GuestTeamId)
-            //            .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Issue>().HasData(
                 new Issue()
                 {
