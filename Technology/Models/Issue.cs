@@ -26,13 +26,24 @@ namespace Technology.WebPortal.Models
         /// <summary>
         /// Внешний ключ сотрудника
         /// </summary>
-        [ForeignKey("Employer")]
-        public int EmployerID { get; set; }
+        public int AuthorID { get; set; }
 
         /// <summary>
-        /// Ссылка на сотрудника
+        /// Ссылка на сотрудника-автора
         /// </summary>
-        public virtual Employee Employer { get; set; }
+        [ForeignKey("AuthorID")]
+        public virtual Employee Author { get; set; }
+
+        /// <summary>
+        /// Внешний ключ сотрудника-автора
+        /// </summary>
+        public int ExecutorID { get; set; }
+
+        /// <summary>
+        /// Ссылка на сотрудника-исполнителя
+        /// </summary>
+        [ForeignKey("ExecutorID")]
+        public virtual Employee Executor { get; set; }
 
         /// <summary>
         /// Внешний ключ категории обращения

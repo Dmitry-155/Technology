@@ -27,10 +27,10 @@
                 <text>@item.Description</text>
             </td>
             <td>
-                <text>@item.Employer.Name</text>
+                <text>@string.Format("{0} {1} {2}", @item.Author.SurName, @item.Author.Name, @item.Author.MidName)</text>
             </td>
             <td>
-                <text>@item.Employer.Name</text>
+                <text>@string.Format("{0} {1} {2}", @item.Executor.SurName, @item.Executor.Name, @item.Executor.MidName)</text>
             </td>
             <td>
                 <text>@item.IssueCategory.Description</text>

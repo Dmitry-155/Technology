@@ -39,13 +39,25 @@ namespace Technology.WebPortal.DAL
                 .WithOne(e => e.Issue)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            //modelBuilder.Entity<Employee>()
+            //    .HasMany()
+            //    .WithOne(m => m.EmployeeId)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Issue>()
+            //            .HasRequired(m => m.GuestTeam)
+            //            .WithMany(t => t.AwayMatches)
+            //            .HasForeignKey(m => m.GuestTeamId)
+            //            .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Issue>().HasData(
                 new Issue()
                 {
                     IssueID = 1,
                     Number = "IT-0001",
                     Description = "Сетевая проблема",
-                    EmployerID = 2,
+                    AuthorID = 2,
+                    ExecutorID = 6,
                     IssueCategoryID = 1,
                 },
                 new Issue()
@@ -53,7 +65,8 @@ namespace Technology.WebPortal.DAL
                     IssueID = 2,
                     Number = "IT-0002",
                     Description = "Проблема с компьютером",
-                    EmployerID = 5,
+                    AuthorID = 5,
+                    ExecutorID = 6,
                     IssueCategoryID = 1,
                 },
                 new Issue()
@@ -61,7 +74,8 @@ namespace Technology.WebPortal.DAL
                     IssueID = 3,
                     Number = "FIN-0001",
                     Description = "Оформление справки",
-                    EmployerID = 4,
+                    AuthorID = 4,
+                    ExecutorID = 7,
                     IssueCategoryID = 2,
                 });
 

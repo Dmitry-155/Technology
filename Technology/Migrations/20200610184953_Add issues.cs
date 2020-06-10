@@ -48,24 +48,31 @@ namespace Technology.WebPortal.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Number = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    EmployerID = table.Column<int>(nullable: false),
+                    AuthorID = table.Column<int>(nullable: false),
+                    ExecutorID = table.Column<int>(nullable: false),
                     IssueCategoryID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Issues", x => x.IssueID);
                     table.ForeignKey(
-                        name: "FK_Issues_Employees_EmployerID",
-                        column: x => x.EmployerID,
+                        name: "FK_Issues_Employees_AuthorID",
+                        column: x => x.AuthorID,
                         principalTable: "Employees",
                         principalColumn: "EmployeeId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_Issues_Employees_ExecutorID",
+                        column: x => x.ExecutorID,
+                        principalTable: "Employees",
+                        principalColumn: "EmployeeId",
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Issues_IssueCategories_IssueCategoryID",
                         column: x => x.IssueCategoryID,
                         principalTable: "IssueCategories",
                         principalColumn: "IssueCategoryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -141,18 +148,18 @@ namespace Technology.WebPortal.Migrations
 
             migrationBuilder.InsertData(
                 table: "Issues",
-                columns: new[] { "IssueID", "Description", "EmployerID", "IssueCategoryID", "Number" },
-                values: new object[] { 1, "Сетевая проблема", 2, 1, "IT-0001" });
+                columns: new[] { "IssueID", "AuthorID", "Description", "ExecutorID", "IssueCategoryID", "Number" },
+                values: new object[] { 1, 2, "Сетевая проблема", 6, 1, "IT-0001" });
 
             migrationBuilder.InsertData(
                 table: "Issues",
-                columns: new[] { "IssueID", "Description", "EmployerID", "IssueCategoryID", "Number" },
-                values: new object[] { 2, "Проблема с компьютером", 5, 1, "IT-0002" });
+                columns: new[] { "IssueID", "AuthorID", "Description", "ExecutorID", "IssueCategoryID", "Number" },
+                values: new object[] { 2, 5, "Проблема с компьютером", 6, 1, "IT-0002" });
 
             migrationBuilder.InsertData(
                 table: "Issues",
-                columns: new[] { "IssueID", "Description", "EmployerID", "IssueCategoryID", "Number" },
-                values: new object[] { 3, "Оформление справки", 4, 2, "FIN-0001" });
+                columns: new[] { "IssueID", "AuthorID", "Description", "ExecutorID", "IssueCategoryID", "Number" },
+                values: new object[] { 3, 4, "Оформление справки", 7, 2, "FIN-0001" });
 
             migrationBuilder.InsertData(
                 table: "Comments",
@@ -198,9 +205,14 @@ namespace Technology.WebPortal.Migrations
                 column: "IssueID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Issues_EmployerID",
+                name: "IX_Issues_AuthorID",
                 table: "Issues",
-                column: "EmployerID");
+                column: "AuthorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Issues_ExecutorID",
+                table: "Issues",
+                column: "ExecutorID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Issues_IssueCategoryID",

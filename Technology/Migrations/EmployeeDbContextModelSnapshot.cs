@@ -262,10 +262,13 @@ namespace Technology.WebPortal.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AuthorID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EmployerID")
+                    b.Property<int>("ExecutorID")
                         .HasColumnType("int");
 
                     b.Property<int>("IssueCategoryID")
@@ -276,7 +279,9 @@ namespace Technology.WebPortal.Migrations
 
                     b.HasKey("IssueID");
 
-                    b.HasIndex("EmployerID");
+                    b.HasIndex("AuthorID");
+
+                    b.HasIndex("ExecutorID");
 
                     b.HasIndex("IssueCategoryID");
 
@@ -286,24 +291,27 @@ namespace Technology.WebPortal.Migrations
                         new
                         {
                             IssueID = 1,
+                            AuthorID = 2,
                             Description = "Сетевая проблема",
-                            EmployerID = 2,
+                            ExecutorID = 6,
                             IssueCategoryID = 1,
                             Number = "IT-0001"
                         },
                         new
                         {
                             IssueID = 2,
+                            AuthorID = 5,
                             Description = "Проблема с компьютером",
-                            EmployerID = 5,
+                            ExecutorID = 6,
                             IssueCategoryID = 1,
                             Number = "IT-0002"
                         },
                         new
                         {
                             IssueID = 3,
+                            AuthorID = 4,
                             Description = "Оформление справки",
-                            EmployerID = 4,
+                            ExecutorID = 7,
                             IssueCategoryID = 2,
                             Number = "FIN-0001"
                         });
@@ -367,9 +375,15 @@ namespace Technology.WebPortal.Migrations
 
             modelBuilder.Entity("Technology.WebPortal.Models.Issue", b =>
                 {
-                    b.HasOne("Technology.WebPortal.Models.Employee", "Employer")
+                    b.HasOne("Technology.WebPortal.Models.Employee", "Author")
                         .WithMany()
-                        .HasForeignKey("EmployerID")
+                        .HasForeignKey("AuthorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Technology.WebPortal.Models.Employee", "Executor")
+                        .WithMany()
+                        .HasForeignKey("ExecutorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

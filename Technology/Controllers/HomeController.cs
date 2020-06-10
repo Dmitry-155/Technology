@@ -38,7 +38,8 @@ namespace WebApplication444.Controllers
         {
             ViewBag.Issues = 
                 _context.Issues
-                .Include(i => i.Employer)
+                .Include(i => i.Author)
+                .Include(i => i.Executor)
                 .Include(i => i.IssueCategory)
                 .Include(i => i.Comments)
                 .ToList();
