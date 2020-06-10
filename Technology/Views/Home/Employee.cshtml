@@ -9,10 +9,13 @@
 <table class="table">
     <tr>
         <th>Id</th>
+        <th>Фамилия</th>
         <th>Имя</th>
+        <th>Отчество</th>
         <th>Адрес</th>
-        <th>Компания</th>
-        <th>Профессия</th>
+        <th>Отдел</th>
+        <th>Должность</th>
+        <th>Телефон</th>
     </tr>
     @for (int item = 0; item < Model.Count(); item++)
     {
@@ -21,16 +24,25 @@
                 <text>@Model.ToList()[item].EmployeeId</text>
             </td>
             <td>
+                <text>@Model.ToList()[item].SurName</text>
+            </td>
+            <td>
                 <text>@Model.ToList()[item].Name</text>
+            </td>
+            <td>
+                <text>@Model.ToList()[item].MidName</text>
             </td>
             <td>
                 <text>@Model.ToList()[item].Address</text>
             </td>
             <td>
-                <text>@Model.ToList()[item].CompanyName</text>
+                <text>@Model.ToList()[item].Department</text>
             </td>
             <td>
                 <text>@Model.ToList()[item].Designation</text>
+            </td>
+            <td>
+                <text>@Model.ToList()[item].Phone</text>
             </td>
         </tr>
     }
