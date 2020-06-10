@@ -89,6 +89,18 @@ h2 {
     color: black;
 }
 
+h3 {
+    color: black;
+}
+
+h4 {
+    color: black;
+}
+
+.control-label {
+    color:black;
+}
+
 *,
 *:before,
 *:after {

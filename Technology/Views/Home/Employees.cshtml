@@ -19,7 +19,7 @@
     {
         <tr>
             <td>
-                <text>@item.EmployeeId</text>
+                <a asp-area="" asp-controller="Home" asp-action="EmployeeDetail" asp-route-id="@item.EmployeeId">@item.EmployeeId</a>
             </td>
             <td>
                 <text>@item.SurName</text>
