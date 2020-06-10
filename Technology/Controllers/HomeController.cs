@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Linq;
@@ -24,10 +25,25 @@ namespace WebApplication444.Controllers
             return View();
         }
 
-        public IActionResult Employee()
+        public IActionResult Employees()
         {
-            var employees = _context.Employees.ToList();
-            return View(employees);
+            ViewBag.Employees = 
+                _context.Employees
+                .ToList();
+
+            return View();
+        }
+
+        public IActionResult Issues()
+        {
+            ViewBag.Issues = 
+                _context.Issues
+                .Include(i => i.Employer)
+                .Include(i => i.IssueCategory)
+                .Include(i => i.Comments)
+                .ToList();
+
+            return View();
         }
 
         public IActionResult Privacy()

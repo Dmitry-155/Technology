@@ -1,11 +1,9 @@
-﻿@model IEnumerable<Technology.WebPortal.Models.Employee>
-
-@{
+﻿@{
     ViewBag.Title = "Сотрудники";
+    var employees = @ViewBag.Employees;
 }
 
 <h2>Сотрудники</h2>
-
 <table class="table">
     <tr>
         <th>Id</th>
@@ -17,32 +15,32 @@
         <th>Должность</th>
         <th>Телефон</th>
     </tr>
-    @for (int item = 0; item < Model.Count(); item++)
+    @foreach (var item in employees)
     {
         <tr>
             <td>
-                <text>@Model.ToList()[item].EmployeeId</text>
+                <text>@item.EmployeeId</text>
             </td>
             <td>
-                <text>@Model.ToList()[item].SurName</text>
+                <text>@item.SurName</text>
             </td>
             <td>
-                <text>@Model.ToList()[item].Name</text>
+                <text>@item.Name</text>
             </td>
             <td>
-                <text>@Model.ToList()[item].MidName</text>
+                <text>@item.MidName</text>
             </td>
             <td>
-                <text>@Model.ToList()[item].Address</text>
+                <text>@item.Address</text>
             </td>
             <td>
-                <text>@Model.ToList()[item].Department</text>
+                <text>@item.Department</text>
             </td>
             <td>
-                <text>@Model.ToList()[item].Designation</text>
+                <text>@item.Designation</text>
             </td>
             <td>
-                <text>@Model.ToList()[item].Phone</text>
+                <text>@item.Phone</text>
             </td>
         </tr>
     }

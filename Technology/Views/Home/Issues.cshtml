@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Сотрудники";
+    var issues = @ViewBag.Issues;
+}
+
+<h2>Обращения</h2>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Номер</th>
+        <th>Текст</th>
+        <th>Автор</th>
+        <th>Исполнитель</th>
+        <th>Категория</th>
+        <th>Количество комментариев</th>
+    </tr>
+    @foreach (var item in issues)
+    {
+        <tr>
+            <td>
+                <text>@item.IssueID</text>
+            </td>
+            <td>
+                <text>@item.Number</text>
+            </td>
+            <td>
+                <text>@item.Description</text>
+            </td>
+            <td>
+                <text>@item.Employer.Name</text>
+            </td>
+            <td>
+                <text>@item.Employer.Name</text>
+            </td>
+            <td>
+                <text>@item.IssueCategory.Description</text>
+            </td>
+            <td>
+                <text>@item.Comments.Count</text>
+            </td>
+        </tr>
+    }
+</table>

@@ -85,6 +85,10 @@ h1 {
     font-weight: normal;
 }
 
+h2 {
+    color: black;
+}
+
 *,
 *:before,
 *:after {
