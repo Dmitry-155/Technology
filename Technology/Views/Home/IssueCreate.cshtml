@@ -1,0 +1,37 @@
+﻿@model Technology.WebPortal.Models.Issue
+
+@{
+    ViewBag.Title = "Создать обращение";
+}
+
+<h4>Создать обращение</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="IssueCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IssueCategory" class="control-label">Категория обращения</label>
+                <br />
+                <label class="control-label" style="background-color: lightsalmon"></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label">Учетный номер</label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Описание</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать обращение" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">На главную</a>
+</div>

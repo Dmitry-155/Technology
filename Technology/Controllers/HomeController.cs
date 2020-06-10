@@ -156,6 +156,38 @@ namespace WebApplication444.Controllers
             return View(issue);
         }
 
+        [HttpGet]
+        [Route("Home/IssueCreate")]
+        public IActionResult IssueCreate(int id)
+        {
+            var issue = new Issue();
+            return View(issue);
+        }
+
+        [HttpPost]
+        [Route("Home/IssueCreate")]
+        public IActionResult IssueCreate([Bind("IssueID,Number,Description")] Issue issue)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // дополнить модель данными по умолчанию
+
+
+                    // сохранить обращение
+                    _context.Update(issue);
+                    _context.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+                }
+                return RedirectToAction("Issues");
+            }
+            return View(issue);
+        }
+
         public IActionResult Privacy()
         {
             return View();
