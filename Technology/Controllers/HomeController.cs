@@ -78,6 +78,8 @@ namespace WebApplication444.Controllers
             return View(employee);
         }
 
+        [HttpGet]
+        [Route("Home/Issues")]
         public IActionResult Issues()
         {
             ViewBag.Issues = 
@@ -89,6 +91,69 @@ namespace WebApplication444.Controllers
                 .ToList();
 
             return View();
+        }
+
+        [HttpGet]
+        [Route("Home/IssueDetail/{id}")]
+        public IActionResult IssueDetail(int id)
+        {
+            var issue = _context.Issues
+                .Include(i => i.Author)
+                .Include(i => i.Executor)
+                .Include(i => i.IssueCategory)
+                .Include(i => i.Comments)
+                .AsNoTracking()
+                .FirstOrDefault(m => m.IssueID == id);
+
+            var employees = _context.Employees.AsNoTracking();
+
+            foreach (var comment in issue.Comments)
+            {
+                comment.Employer = employees.First(e => e.EmployeeId == comment.EmployerID);
+            }
+
+            if (issue == null)
+            {
+                return NotFound();
+            }
+
+            return View(issue);
+        }
+
+        [HttpPost]
+        [Route("Home/IssueEdit/{id}")]
+        public IActionResult IssueEdit(int id, [Bind("IssueID,Number,Description")] Issue issue)
+        {
+            if (id != issue.IssueID)
+            {
+                return NotFound();
+            }
+
+            var issueOrigin = _context.Issues
+                .Include(i => i.Author)
+                .Include(i => i.Executor)
+                .Include(i => i.IssueCategory)
+                .Include(i => i.Comments)
+                .AsNoTracking()
+                .FirstOrDefault(m => m.IssueID == id);
+
+            issueOrigin.Number = issue.Number;
+            issueOrigin.Description = issue.Description;
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(issueOrigin);
+                    _context.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+                }
+                return RedirectToAction("Issues");
+            }
+            return View(issue);
         }
 
         public IActionResult Privacy()
