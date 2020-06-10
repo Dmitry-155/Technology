@@ -158,22 +158,31 @@ namespace WebApplication444.Controllers
 
         [HttpGet]
         [Route("Home/IssueCreate")]
-        public IActionResult IssueCreate(int id)
+        public IActionResult IssueCreate()
         {
+            ViewBag.IssueCategories = _context.IssueCategories
+                .AsNoTracking()
+                .ToList();
+
             var issue = new Issue();
             return View(issue);
         }
 
         [HttpPost]
         [Route("Home/IssueCreate")]
-        public IActionResult IssueCreate([Bind("IssueID,Number,Description")] Issue issue)
+        public IActionResult IssueCreate([Bind("IssueID,Number,Description,IssueCategoryID")] Issue issue)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     // дополнить модель данными по умолчанию
-
+                    var authorID = _context.Employees.First(e => e.EmployeeId == 1).EmployeeId;
+                    var itSupportId = _context.Employees.First(e => e.EmployeeId == 6).EmployeeId;
+                    var finSupportId = _context.Employees.First(e => e.EmployeeId == 7).EmployeeId;
+                    
+                    issue.AuthorID = authorID;
+                    issue.ExecutorID = issue.IssueCategoryID == 1 ? itSupportId : finSupportId;
 
                     // сохранить обращение
                     _context.Update(issue);
