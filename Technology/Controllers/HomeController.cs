@@ -157,20 +157,22 @@ namespace WebApplication444.Controllers
         }
 
         [HttpGet]
-        [Route("Home/IssueCreate")]
-        public IActionResult IssueCreate()
+        [Route("Home/IssueCreate/{type}")]
+        public IActionResult IssueCreate(int type)
         {
             ViewBag.IssueCategories = _context.IssueCategories
                 .AsNoTracking()
                 .ToList();
+            ViewBag.Type = type;
 
             var issue = new Issue();
+            issue.Number = type == 1 ? "IT-00357" : "FIN-02354";
             return View(issue);
         }
 
         [HttpPost]
-        [Route("Home/IssueCreate")]
-        public IActionResult IssueCreate([Bind("IssueID,Number,Description,IssueCategoryID")] Issue issue)
+        [Route("Home/IssueCreate/{type}")]
+        public IActionResult IssueCreate(int type, [Bind("IssueID,Number,Description,IssueCategoryID")] Issue issue)
         {
             if (ModelState.IsValid)
             {

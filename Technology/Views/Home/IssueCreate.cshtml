@@ -15,7 +15,7 @@
                 <label asp-for="IssueCategory" class="control-label">Категория обращения</label>
                 <select asp-for="IssueCategoryID"
                         class="form-control"
-                        asp-items="@(new SelectList(@ViewBag.IssueCategories, "IssueCategoryID", "Description"))"></select>
+                        asp-items="@(new SelectList(@ViewBag.IssueCategories, "IssueCategoryID", "Description", (object)"2"))"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Number" class="control-label">Учетный номер</label>
